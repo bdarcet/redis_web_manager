@@ -9,15 +9,15 @@ Gem::Specification.new do |spec|
   spec.version     = RedisWebManager::VERSION
   spec.authors     = ["olivdums"]
   spec.email       = ["dumas.olivier@outlook.fr"]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of RedisWebManager."
-  spec.description = "TODO: Description of RedisWebManager."
+  spec.homepage    = "http://mygemserver.co"
+  spec.summary     = "rr: Summary of RedisWebManager."
+  spec.description = "rr: Description of RedisWebManager."
   spec.license     = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata["allowed_push_host"] = spec.homepage
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
@@ -25,5 +25,5 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.add_dependency "rails", "~> 5.2.4"
+  spec.add_dependency "rails", ">= 5.2", "< 7"
 end
