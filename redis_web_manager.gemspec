@@ -1,29 +1,39 @@
-$:.push File.expand_path("lib", __dir__)
+# frozen_string_literal: true
+
+$LOAD_PATH.push File.expand_path('lib', __dir__)
 
 # Maintain your gem's version:
-require "redis_web_manager/version"
+require 'redis_web_manager/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
-  spec.name        = "redis_web_manager"
+  spec.name        = 'redis_web_manager'
   spec.version     = RedisWebManager::VERSION
-  spec.authors     = ["olivdums"]
-  spec.email       = ["dumas.olivier@outlook.fr"]
-  spec.homepage    = "http://mygemserver.co"
-  spec.summary     = "rr: Summary of RedisWebManager."
-  spec.description = "rr: Description of RedisWebManager."
-  spec.license     = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = spec.homepage
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
+  spec.authors     = ['Boris BRESCIANI', 'Benjamin DARCET', 'Olivier DUMAS', 'Sylvain KRAISIN']
+  spec.email       = %w[boris2bresciani@gmail.com
+                        b.darcet@gmail.com
+                        dumas.olivier@outlook.fr
+                        sylvain.kraisin@gmail.com]
+
+  spec.summary     = 'rr: Summary of RedisWebManager.'
+  spec.description = 'rr: Description of RedisWebManager.'
+  spec.homepage    = 'https://github.com/DumasOlivier/redis_web_manager'
+  spec.license     = 'MIT'
+
+  spec.metadata['homepage_uri'] = spec.homepage
+  spec.metadata['source_code_uri'] = spec.homepage
+
+  # Specify which files should be added to the gem when it is released.
+  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
+  spec.files = Dir.chdir(File.expand_path(__dir__)) do
+    `git ls-files -z`.split("\x0")
+                     .reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
+  spec.bindir        = 'exe'
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ['lib']
+  spec.test_files = Dir['spec/**/*']
 
-  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
-
-  spec.add_dependency "rails", ">= 5.2", "< 7"
+  spec.add_dependency 'rails', '>= 5.2', '< 7'
 end
