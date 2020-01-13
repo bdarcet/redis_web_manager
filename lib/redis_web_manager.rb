@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'redis_web_manager/configuration'
 require 'redis_web_manager/engine'
+require 'redis_web_manager/configuration'
 
 module RedisWebManager
   class << self
