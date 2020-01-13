@@ -3,7 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe RedisWebManager do
-  it 'returns a RedisWebManager.configuration.redis class' do
-    expect(RedisWebManager.configuration.redis).to be_a_kind_of(Redis)
+  describe 'Test configuration' do
+    it 'returns a Redis class' do
+      expect(RedisWebManager.configuration.redis).to be_a_kind_of(Redis)
+    end
+
+    it 'returns a Redis class (Reset)' do
+      RedisWebManager.reset
+      expect(RedisWebManager.configuration.redis).to be_a_kind_of(Redis)
+    end
   end
 end
