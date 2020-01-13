@@ -6,10 +6,6 @@ require 'redis_web_manager/configuration'
 module RedisWebManager
   class << self
     attr_writer :configuration
-
-    def lol
-      puts 'lol'
-    end
   end
 
   def self.configuration
