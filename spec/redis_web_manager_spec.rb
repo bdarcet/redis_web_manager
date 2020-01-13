@@ -2,6 +2,6 @@
 
 RSpec.describe RedisWebManager do
   it 'returns a RedisWebManager.configuration class' do
-    p RedisWebManager.configuration
+    p RedisWebManager.lol
   end
 end
