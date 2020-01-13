@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
-require "rails"
-require "action_controller/railtie"
-require "action_view/railtie"
-require "sprockets/railtie"
+require 'rails'
+require 'action_controller/railtie'
+require 'action_view/railtie'
+require 'sprockets/railtie'
 
 Bundler.require(*Rails.groups)
-require "redis_web_manager"
+require 'redis_web_manager'
 
 module Dummy
   class Application < Rails::Application
@@ -19,4 +21,3 @@ module Dummy
     # the framework and any gems in your application.
   end
 end
-
