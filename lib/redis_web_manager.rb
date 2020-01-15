@@ -7,17 +7,18 @@ require 'redis_web_manager/redis_cli'
 module RedisWebManager
   class << self
     attr_writer :configuration
-  end
 
-  def self.configuration
-    @configuration ||= Configuration.new
-  end
+    def configuration
+      @configuration ||= Configuration.new
+    end
 
-  def self.reset
-    @configuration = Configuration.new
-  end
+    def reset
+      @configuration = Configuration.new
+    end
 
-  def self.configure
-    yield(configuration)
+    def configure
+      yield(configuration)
+    end
+
   end
 end
