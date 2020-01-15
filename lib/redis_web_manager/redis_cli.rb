@@ -1,6 +1,7 @@
-module RedisWebManager
-  class Redis
+# frozen_string_literal: true
 
+module RedisWebManager
+  class RedisCli
     private
 
     def connection

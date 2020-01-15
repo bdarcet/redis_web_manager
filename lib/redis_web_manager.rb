@@ -2,6 +2,7 @@
 
 require 'redis_web_manager/engine'
 require 'redis_web_manager/configuration'
+require 'redis_web_manager/redis_cli'
 
 module RedisWebManager
   class << self
