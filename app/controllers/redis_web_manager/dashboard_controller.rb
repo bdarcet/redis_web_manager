@@ -1,4 +1,4 @@
-require_dependency "redis_web_manager/application_controller"
+# frozen_string_literal: true
 
 module RedisWebManager
   class DashboardController < ApplicationController
