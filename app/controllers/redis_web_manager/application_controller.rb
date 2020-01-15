@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RedisWebManager
   class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception

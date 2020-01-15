@@ -35,5 +35,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.test_files = Dir['spec/**/*']
 
+  spec.add_development_dependency 'rspec-rails', '= 4.0.0.beta3'
+  spec.add_development_dependency 'simplecov', '~> 0.16'
+
   spec.add_dependency 'rails', '>= 5.2', '< 7'
+  spec.add_dependency 'redis', '~> 4.1.0'
 end
