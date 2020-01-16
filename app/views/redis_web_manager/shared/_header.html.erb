@@ -4,6 +4,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Redis Web Manager">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <%= @status ? content_tag(:span, 'ON', class: ["badge", "badge-pill", "badge-success"]) : content_tag(:span, 'OFF', class: ["badge", "badge-pill", "badge-danger"]) %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item mr-1">
