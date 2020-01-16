@@ -14,6 +14,10 @@ module RedisWebManager
       @dbsize ||= redis.dbsize
     end
 
+    def [](value)
+      info[value]
+    end
+
     def last_save
       @last_save ||= Time.at(redis.lastsave)
     end
