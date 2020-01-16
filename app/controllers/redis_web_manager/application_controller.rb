@@ -9,10 +9,10 @@ module RedisWebManager
     private
 
     def authenticate_user!
-      if authenticate || !defined?(super)
-        instance_exec(&authenticate)
-      else
+      if defined?(super)
         super
+      elsif authenticate
+        instance_exec(&authenticate)
       end
     end
 
