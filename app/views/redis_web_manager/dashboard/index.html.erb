@@ -8,18 +8,12 @@
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Info
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Version
-          <span><%= @version %></span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Role
-          <span><%= @role %></span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          Etc
-          <span>1</span>
-        </li>
+        <% @informations.each do |data| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= data[:name].to_s.humanize %>
+            <span><%= data[:info] %></span>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

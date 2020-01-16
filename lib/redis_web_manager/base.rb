@@ -18,6 +18,10 @@ module RedisWebManager
       @db ||= connection[:db]
     end
 
+    def dbsize
+      @dbsize ||= redis.dbsize
+    end
+
     def id
       @id ||= connection[:id]
     end
