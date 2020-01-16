@@ -11,6 +11,7 @@
     <%= javascript_include_tag 'redis_web_manager/application' %>
   </head>
   <body>
-  <%= yield %>
+    <%= render partial: 'redis_web_manager/shared/header' %>
+    <%= yield %>
   </body>
 </html>
