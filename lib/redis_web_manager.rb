@@ -25,9 +25,5 @@ module RedisWebManager
     def connection
       RedisWebManager::Connection.new
     end
-
-    def authenticate
-      RedisWebManager.configuration.authenticate
-    end
   end
 end

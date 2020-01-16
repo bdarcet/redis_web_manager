@@ -9,9 +9,9 @@ module RedisWebManager
 
     def index
       INFORMATIONS.each do |key, value|
-        instance_variable_set("@#{key}", RedisWebManager::Base.new.info[value])
+        instance_variable_set("@#{key}", RedisWebManager.info[value])
       end
-      @status = RedisWebManager::Base.new.status
+      @status = RedisWebManager.info.status
     end
   end
 end

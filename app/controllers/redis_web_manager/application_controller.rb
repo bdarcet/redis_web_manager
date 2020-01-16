@@ -17,7 +17,7 @@ module RedisWebManager
     end
 
     def authenticate
-      RedisWebManager.authenticate
+      RedisWebManager.configuration.authenticate
     end
   end
 end
