@@ -12,7 +12,8 @@ module RedisWebManager
     def index
       @informations = []
       INFORMATIONS.each do |key, value|
-        @informations << { name: key, info: instance_variable_set("@#{key}", RedisWebManager.info[value]) }
+        # FIXME: double info.info
+        @informations << { name: key, info: RedisWebManager.info.info[value] }
       end
       @status = RedisWebManager.info.status
       @dbsize = RedisWebManager.info.dbsize
