@@ -19,6 +19,5 @@ module RedisWebManager
     def configure
       yield(configuration)
     end
-
   end
 end
