@@ -4,14 +4,18 @@ module RedisWebManager
   class DashboardController < ApplicationController
     INFORMATIONS = { version: 'redis_version',
                      role: 'role',
+                     uptime_in_days: 'uptime_in_days',
                      used_memory: 'used_memory_human',
-                     total_system_memory: 'total_system_memory_human' }.freeze
+                     used_memory_peak_human: 'used_memory_peak_human',
+                     mem_fragmentation_ratio: 'mem_fragmentation_ratio' }.freeze
 
     def index
+      @informations = []
       INFORMATIONS.each do |key, value|
-        instance_variable_set("@#{key}", RedisWebManager::Base.new.info[value])
+        @informations << { name: key, info: instance_variable_set("@#{key}", RedisWebManager::Base.new.info[value]) }
       end
       @status = RedisWebManager::Base.new.status
+      @dbsize = RedisWebManager::Base.new.dbsize
     end
   end
 end
