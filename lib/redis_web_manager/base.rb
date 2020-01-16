@@ -2,6 +2,10 @@
 
 module RedisWebManager
   class Base
+    def status
+      @status ||= redis.ping == 'PONG'
+    end
+
     def host
       @host ||= connection[:host]
     end
