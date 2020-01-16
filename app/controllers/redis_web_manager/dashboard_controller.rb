@@ -2,6 +2,8 @@
 
 module RedisWebManager
   class DashboardController < ApplicationController
-    def index; end
+    def index
+      #@version = RedisWebManager::Base.new.info['redis_version']
+    end
   end
 end
