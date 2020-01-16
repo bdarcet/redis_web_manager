@@ -2,7 +2,7 @@
 
 require 'redis_web_manager/engine'
 require 'redis_web_manager/configuration'
-require 'redis_web_manager/redis_cli'
+require 'redis_web_manager/base'
 
 module RedisWebManager
   class << self
@@ -19,6 +19,5 @@ module RedisWebManager
     def configure
       yield(configuration)
     end
-
   end
 end

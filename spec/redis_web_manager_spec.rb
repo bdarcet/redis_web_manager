@@ -19,5 +19,13 @@ RSpec.describe RedisWebManager do
       end
       expect(RedisWebManager.configuration.redis.connection[:db]).to eql(1)
     end
+
+    it 'returns a raise error' do
+      expect do
+        RedisWebManager.configure do |config|
+          config.redis = 'Test'
+        end
+      end.to raise_error(ArgumentError)
+    end
   end
 end
