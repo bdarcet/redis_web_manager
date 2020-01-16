@@ -4,21 +4,11 @@ require 'redis'
 
 module RedisWebManager
   class Configuration
-    # Attributes
-    attr_accessor :redis
+    attr_accessor :redis, :authenticate
 
-    # Methods
     def initialize
-      @redis = Redis.new
-      check_redis
-    end
-
-    private
-
-    def check_redis
-      # FIXME: doesn't work
-      valid = redis.is_a?(Redis)
-      raise ArgumentError, "RedisWebManager doesn't support #{redis.class} (#{redis})" unless valid
+      @redis = ::Redis.new
+      @authenticate = nil
     end
   end
 end

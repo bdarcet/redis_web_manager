@@ -3,6 +3,8 @@
 require 'redis_web_manager/engine'
 require 'redis_web_manager/configuration'
 require 'redis_web_manager/base'
+require 'redis_web_manager/connection'
+require 'redis_web_manager/info'
 
 module RedisWebManager
   class << self
@@ -12,12 +14,20 @@ module RedisWebManager
       @configuration ||= Configuration.new
     end
 
-    def reset
-      @configuration = Configuration.new
-    end
-
     def configure
       yield(configuration)
+    end
+
+    def info
+      RedisWebManager::Info.new
+    end
+
+    def connection
+      RedisWebManager::Connection.new
+    end
+
+    def authenticate
+      RedisWebManager.configuration.authenticate
     end
   end
 end
