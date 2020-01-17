@@ -14,19 +14,6 @@ module RedisWebManager
       @dbsize ||= redis.dbsize
     end
 
-<<<<<<< HEAD
-    def flushdb
-      @flushdb ||= redis.flushdb
-    end
-
-    #redis.client(:pause, 0)
-
-    def [](value)
-      info[value]
-    end
-
-=======
->>>>>>> master
     def last_save
       @last_save ||= Time.at(redis.lastsave)
     end

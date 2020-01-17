@@ -15,11 +15,11 @@
           </button>
         </li>
         <li class="nav-item mr-1">
-          <button type="button" class="btn btn-danger">
+          <%= link_to pause_path, class: 'btn btn-danger' do %>
             <svg class="bi bi-pause-fill" width="1.4em" height="1.4em" viewBox="0 0 20 20" fill="#FFF" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.5 5.5A1.5 1.5 0 019 7v6a1.5 1.5 0 01-3 0V7a1.5 1.5 0 011.5-1.5zm5 0A1.5 1.5 0 0114 7v6a1.5 1.5 0 01-3 0V7a1.5 1.5 0 011.5-1.5z"></path>
             </svg>
-          </button>
+          <% end %>
         </li>
         <li class="nav-item mr-1">
           <%= link_to "Flush DB", flushdb_path, method: :delete, data: {confirm: 'Are you sure you want to flush your entire cache ?'}, class: 'btn btn-danger' %>

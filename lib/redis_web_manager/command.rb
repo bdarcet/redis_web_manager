@@ -5,5 +5,9 @@ module RedisWebManager
     def flushdb
       redis.flushdb
     end
+
+    def pause
+      redis.client(:pause, 0)
+    end
   end
 end
