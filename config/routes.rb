@@ -5,7 +5,8 @@ RedisWebManager::Engine.routes.draw do
   root 'dashboard#index'
   # Configuration
   get '/configuration', to: 'configuration#index'
-
+  # Keys
+  resources :keys
   # Actions
   # -------
   # Flush
