@@ -29,5 +29,10 @@ module RedisWebManager
     def last_save
       @last_save ||= Time.at(redis.lastsave)
     end
+
+    def stringified_infos
+      # FIXME Do we need to add configuration here ? Whats inside ?
+      "#{DateTime.now}_status:#{status}_stats:#{stats}_dbsize:#{dbsize}_configuration:#{configuration}_latency:#{latency}_memoryUsage:#{memory_usage}_lastsave:#{last_save}"
+    end
   end
 end
