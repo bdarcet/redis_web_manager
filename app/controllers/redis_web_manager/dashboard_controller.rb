@@ -25,10 +25,12 @@ module RedisWebManager
 
     def stats
       @stats ||= info.stats.symbolize_keys.slice(:redis_version,
+                                                 :redis_mode,
                                                  :os,
                                                  :role,
                                                  :connected_clients,
                                                  :uptime_in_days,
+                                                 :uptime_in_seconds,
                                                  :used_memory_human,
                                                  :used_memory_peak_human,
                                                  :mem_fragmentation_ratio)

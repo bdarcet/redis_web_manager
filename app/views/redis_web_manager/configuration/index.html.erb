@@ -9,10 +9,10 @@
         </div>
         <div class="card-body p-0">
           <ul class="list-group list-group-flush">
-            <% @configurations.each do |config| %>
+            <% @configurations.each do |k, v| %>
               <li class="list-group-item d-flex justify-content-between">
-                <%= config[0] %>
-                <span><%= config[1] %></span>
+                <%= k %>
+                <span><%= v %></span>
               </li>
             <% end %>
           </ul>
