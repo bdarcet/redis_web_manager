@@ -10,6 +10,4 @@ RedisWebManager::Engine.routes.draw do
   # -------
   # Flush
   delete '/flushdb', to: 'dashboard#flushdb'
-  # Pause
-  get '/pause', to: 'dashboard#pause'
 end
