@@ -13,11 +13,6 @@ module RedisWebManager
       redirect_to root_path
     end
 
-    def pause
-      command.pause
-      redirect_to root_path
-    end
-
     private
 
     def info
