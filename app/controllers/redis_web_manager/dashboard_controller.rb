@@ -2,25 +2,34 @@
 
 module RedisWebManager
   class DashboardController < ApplicationController
-    INFORMATIONS = { version: 'redis_version',
-                     role: 'role',
-                     uptime_in_days: 'uptime_in_days',
-                     used_memory: 'used_memory_human',
-                     used_memory_peak_human: 'used_memory_peak_human',
-                     mem_fragmentation_ratio: 'mem_fragmentation_ratio' }.freeze
-
     def index
-      @informations = []
-      INFORMATIONS.each do |key, value|
-        @informations << { name: key, info: RedisWebManager.info[value] }
-      end
-      @status = RedisWebManager.info.status
-      @dbsize = RedisWebManager.info.dbsize
+      @informations = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
+      @status = info.status
+      @dbsize = info.dbsize
     end
 
     def flushdb
-      RedisWebManager.info.flushdb
+      command.flushdb
       redirect_to root_path
+    end
+
+    private
+
+    def info
+      @info ||= RedisWebManager.info
+    end
+
+    def command
+      @command ||= RedisWebManager.command
+    end
+
+    def stats
+      @stats ||= info.stats.symbolize_keys.slice(:version,
+                                                 :role,
+                                                 :uptime_in_days,
+                                                 :used_memory,
+                                                 :used_memory_peak_human,
+                                                 :mem_fragmentation_ratio)
     end
   end
 end

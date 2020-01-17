@@ -6,20 +6,12 @@ module RedisWebManager
       @status ||= redis.ping == 'PONG'
     end
 
-    def info
-      @info ||= redis.info
+    def stats
+      @stats ||= redis.info
     end
 
     def dbsize
       @dbsize ||= redis.dbsize
-    end
-
-    def flushdb
-      @flushdb ||= redis.flushdb
-    end
-
-    def [](value)
-      info[value]
     end
 
     def last_save
