@@ -32,7 +32,7 @@ module RedisWebManager
       @stats ||= info.stats.symbolize_keys.slice(:version,
                                                  :role,
                                                  :uptime_in_days,
-                                                 :used_memory,
+                                                 :used_memory_human,
                                                  :used_memory_peak_human,
                                                  :mem_fragmentation_ratio)
     end
