@@ -4,7 +4,9 @@ module RedisWebManager
   class DashboardController < ApplicationController
     def index
       @information = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
+      # FIXME: Move status + name
       @status = info.status
+      @name = connection.id
       @dbsize = info.dbsize
     end
 
@@ -21,6 +23,10 @@ module RedisWebManager
 
     def command
       @command ||= RedisWebManager.command
+    end
+
+    def connection
+      @connection ||= RedisWebManager.connection
     end
 
     def stats
