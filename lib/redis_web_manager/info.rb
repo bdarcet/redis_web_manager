@@ -6,14 +6,15 @@ module RedisWebManager
       @status ||= redis.ping == 'PONG'
     end
 
-    def info
-      @info ||= redis.info
+    def stats
+      @stats ||= redis.info
     end
 
     def dbsize
       @dbsize ||= redis.dbsize
     end
 
+<<<<<<< HEAD
     def flushdb
       @flushdb ||= redis.flushdb
     end
@@ -24,6 +25,8 @@ module RedisWebManager
       info[value]
     end
 
+=======
+>>>>>>> master
     def last_save
       @last_save ||= Time.at(redis.lastsave)
     end
