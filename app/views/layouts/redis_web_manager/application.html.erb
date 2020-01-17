@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag 'redis_web_manager/application', media: 'all' %>
     <%= javascript_include_tag 'redis_web_manager/application' %>
   </head>
-  <body>
+  <body class="d-flex flex-column h-100">
     <%= render partial: 'redis_web_manager/shared/header' %>
     <%= yield %>
   </body>
