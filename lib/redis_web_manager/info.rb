@@ -22,6 +22,10 @@ module RedisWebManager
       @latency ||= redis.latency(:doctor)
     end
 
+    def memory_usage
+      @memory_usage ||= redis.memory(:usage)
+    end
+
     def last_save
       @last_save ||= Time.at(redis.lastsave)
     end
