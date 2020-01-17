@@ -8,17 +8,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item mr-1">
-          <button type="button" class="btn btn-primary">
-            <svg class="bi bi-play-fill" width="1.4em" height="1.4em" viewBox="0 0 20 20" fill="#FFF" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13.596 10.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V6.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z"></path>
-            </svg>
-          </button>
-        </li>
-        <li class="nav-item mr-1">
-          <%= link_to pause_path, class: 'btn btn-danger' do %>
+          <%= link_to pause_path, class: 'btn btn-primary' do %>
             <svg class="bi bi-pause-fill" width="1.4em" height="1.4em" viewBox="0 0 20 20" fill="#FFF" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.5 5.5A1.5 1.5 0 019 7v6a1.5 1.5 0 01-3 0V7a1.5 1.5 0 011.5-1.5zm5 0A1.5 1.5 0 0114 7v6a1.5 1.5 0 01-3 0V7a1.5 1.5 0 011.5-1.5z"></path>
             </svg>
+            <span>(pause for 1 min)</span>
           <% end %>
         </li>
         <li class="nav-item mr-1">
