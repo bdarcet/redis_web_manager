@@ -7,7 +7,7 @@ module RedisWebManager
     end
 
     def pause
-      redis.client(:pause, 60_000)
+      redis.client(:pause, 0)
     end
   end
 end

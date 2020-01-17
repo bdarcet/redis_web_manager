@@ -14,6 +14,14 @@ module RedisWebManager
       @dbsize ||= redis.dbsize
     end
 
+    def configuration
+      @configuration ||= redis.config(:get, '*')
+    end
+
+    def latency
+      @latency ||= redis.latency(:doctor)
+    end
+
     def last_save
       @last_save ||= Time.at(redis.lastsave)
     end
