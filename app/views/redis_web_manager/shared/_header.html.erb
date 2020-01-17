@@ -4,7 +4,6 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Redis Web Manager">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <%= status(@status) %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -17,7 +16,9 @@
                       flushdb_path,
                       title: 'Flush DB',
                       method: :delete,
-                      data: {confirm: 'Are you sure you want to flush your entire cache ?'},
+                      data: {
+                          confirm: 'Are you sure you want to flush your entire cache ?'
+                      },
                       class: 'btn btn-danger nav-link text-white' %>
         </li>
       </ul>
