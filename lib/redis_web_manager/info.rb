@@ -14,6 +14,10 @@ module RedisWebManager
       @dbsize ||= redis.dbsize
     end
 
+    def flushdb
+      @flushdb ||= redis.flushdb
+    end
+
     def [](value)
       info[value]
     end

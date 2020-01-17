@@ -17,5 +17,10 @@ module RedisWebManager
       @status = RedisWebManager.info.status
       @dbsize = RedisWebManager.info.dbsize
     end
+
+    def flushdb
+      RedisWebManager.info.flushdb
+      redirect_to root_path
+    end
   end
 end
