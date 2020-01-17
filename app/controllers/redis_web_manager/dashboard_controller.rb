@@ -3,7 +3,7 @@
 module RedisWebManager
   class DashboardController < ApplicationController
     def index
-      @informations = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
+      @information = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
       @status = info.status
       @dbsize = info.dbsize
     end
