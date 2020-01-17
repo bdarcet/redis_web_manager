@@ -3,7 +3,8 @@
 RedisWebManager::Engine.routes.draw do
   # Root
   root 'dashboard#index'
-
+  # Configuration
+  get '/configuration', to: 'configuration#index'
 
   # Actions
   # -------
