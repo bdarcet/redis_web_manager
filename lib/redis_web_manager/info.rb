@@ -18,6 +18,8 @@ module RedisWebManager
       @flushdb ||= redis.flushdb
     end
 
+    #redis.client(:pause, 0)
+
     def [](value)
       info[value]
     end
