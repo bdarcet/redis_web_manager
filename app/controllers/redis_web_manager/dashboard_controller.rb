@@ -33,11 +33,10 @@ module RedisWebManager
                                                  :redis_mode,
                                                  :os,
                                                  :role,
+                                                 :config_file,
                                                  :connected_clients,
-                                                 :uptime_in_days,
-                                                 :used_memory_human,
-                                                 :used_memory_peak_human,
-                                                 :mem_fragmentation_ratio)
+                                                 :blocked_clients,
+                                                 :uptime_in_days)
     end
   end
 end
