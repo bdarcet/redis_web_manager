@@ -3,18 +3,15 @@
 module RedisWebManager
   class DashboardController < ApplicationController
     def index
-      @informations = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
+      @information = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
+      # FIXME: Move status + name
       @status = info.status
+      @name = connection.id
       @dbsize = info.dbsize
     end
 
     def flushdb
       command.flushdb
-      redirect_to root_path
-    end
-
-    def pause
-      command.pause
       redirect_to root_path
     end
 
@@ -28,8 +25,13 @@ module RedisWebManager
       @command ||= RedisWebManager.command
     end
 
+    def connection
+      @connection ||= RedisWebManager.connection
+    end
+
     def stats
       @stats ||= info.stats.symbolize_keys.slice(:redis_version,
+                                                 :redis_mode,
                                                  :os,
                                                  :role,
                                                  :connected_clients,
