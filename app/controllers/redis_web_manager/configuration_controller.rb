@@ -4,9 +4,9 @@ module RedisWebManager
   class ConfigurationController < ApplicationController
     def index
       @configurations = info.configuration
-      # FIXME: Move status + name
+      # FIXME: Move status + url
       @status = info.status
-      @name = connection.id
+      @url = connection.id
     end
 
     private
