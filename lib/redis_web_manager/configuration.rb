@@ -9,7 +9,7 @@ module RedisWebManager
     def initialize
       @redis = ::Redis.new
       @authenticate = nil
-      @interval = 10
+      @insertion_interval = 1
     end
   end
 end

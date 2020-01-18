@@ -23,6 +23,7 @@ module RedisWebManager
     end
 
     def memory_usage
+      # FIXME: Error when we call the method.
       @memory_usage ||= redis.memory(:usage)
     end
 
@@ -30,9 +31,9 @@ module RedisWebManager
       @last_save ||= Time.at(redis.lastsave)
     end
 
-    def stringified_infos
-      # FIXME Do we need to add configuration here ? Whats inside ?
-      "#{DateTime.now}_status:#{status}_stats:#{stats}_dbsize:#{dbsize}_configuration:#{configuration}_latency:#{latency}_memoryUsage:#{memory_usage}_lastsave:#{last_save}"
+    def stringify_infos
+      # FIXME: Olivier, Add Memory usage once it's fixed. memoryusage:#{memory_usage}
+      "#{DateTime.now}_status:#{status}_stats:#{stats}_dbsize:#{dbsize}_configuration:#{configuration}_latency:#{latency}_lastsave:#{last_save}"
     end
   end
 end
