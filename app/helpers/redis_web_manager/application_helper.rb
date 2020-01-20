@@ -15,7 +15,7 @@ module RedisWebManager
     end
 
     def last_save(value)
-      content_tag(:kbd, "Last save: #{value.strftime('%d %b %Y - %H:%M')}", class: 'bg-secondary')
+      content_tag(:kbd, "Last save: #{value.strftime('%F - %R')}", class: 'bg-secondary')
     end
 
     def keys(value)
