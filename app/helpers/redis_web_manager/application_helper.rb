@@ -11,7 +11,7 @@ module RedisWebManager
     end
 
     def url(value)
-      content_tag(:kbd, "URL: #{value}", class: 'bg-dark')
+      content_tag(:kbd, "Url: #{value}", class: 'bg-dark')
     end
 
     def last_save(value)
