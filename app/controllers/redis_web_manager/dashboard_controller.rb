@@ -6,6 +6,8 @@ module RedisWebManager
     def index
       @information = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
       @status = info.status
+      @dbsize = info.dbsize
+      @last_save = info.last_save
       @url = connection.id
     end
 

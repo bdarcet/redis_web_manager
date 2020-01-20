@@ -6,6 +6,8 @@ module RedisWebManager
     def index
       @configurations = info.configuration
       @status = info.status
+      @dbsize = info.dbsize
+      @last_save = info.last_save
       @url = connection.id
     end
 

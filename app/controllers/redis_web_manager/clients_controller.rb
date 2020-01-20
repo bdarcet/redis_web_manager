@@ -5,8 +5,10 @@ module RedisWebManager
     # GET /client
     def index
       @status = info.status
+      @dbsize = info.dbsize
+      @last_save = info.last_save
       @url = connection.id
-      @clients = info.clients.map(&:symbolize_keys) # FIXME: Improve design
+      @clients = info.clients.map(&:symbolize_keys)
     end
 
     private
