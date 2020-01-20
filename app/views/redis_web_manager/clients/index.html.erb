@@ -19,9 +19,11 @@
               <thead>
               <tr>
                 <th>ID</th>
+                <th>Name</th>
                 <th>Address</th>
                 <th>Age</th>
-                <th>Idle</th>
+                <th>Flag</th>
+                <th>Event</th>
                 <th>Last command</th>
                 <th>Block</th>
               </tr>
@@ -29,12 +31,28 @@
               <tbody>
               <% @clients.each do |c| %>
                 <tr>
-                  <td><%= c[:id] %></td>
-                  <td><%= c[:addr] %></td>
-                  <td><%= c[:age] %></td>
-                  <td><%= c[:idle] %></td>
-                  <td><%= c[:cmd] %></td>
-                  <td>
+                  <td class="align-middle">
+                    <%= c[:id] %>
+                  </td>
+                  <td class="align-middle">
+                    <%= c[:name] %>
+                  </td>
+                  <td class="align-middle">
+                    <%= c[:addr] %>
+                  </td>
+                  <td class="align-middle">
+                    <%= age(c[:age].to_i) %>
+                  </td>
+                  <td class="align-middle">
+                    <%= flags(c[:flags]) %>
+                  </td>
+                  <td class="align-middle">
+                    <%= events(c[:events]) %>
+                  </td>
+                  <td class="align-middle">
+                    <code><%= c[:cmd] %></code>
+                  </td>
+                  <td class="align-middle">
                     <button class="btn btn-danger">
                       Block
                     </button>
