@@ -29,5 +29,9 @@ module RedisWebManager
     def last_save
       @last_save ||= Time.at(redis.lastsave)
     end
+
+    def clients
+      @clients ||= redis.client(:list)
+    end
   end
 end

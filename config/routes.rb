@@ -2,10 +2,10 @@
 
 RedisWebManager::Engine.routes.draw do
   # Configuration
-  get '/clients', to: 'clients#index'
-
-  # Configuration
   get '/configuration', to: 'configuration#index'
+
+  # Clients
+  get '/clients', to: 'clients#index'
 
   # Actions
   delete '/flushdb', to: 'dashboard#flushdb'
