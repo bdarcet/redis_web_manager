@@ -15,14 +15,24 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
+          <%= link_to 'Flush ALL',
+                      flushall_url,
+                      title: 'Flush ALL',
+                      method: :delete,
+                      data: {
+                          confirm: 'Are you sure you want to flush all DB ?'
+                      },
+                      class: 'btn btn-sm btn-danger nav-link text-white mr-2' %>
+        </li>
+        <li class="nav-item">
           <%= link_to 'Flush DB',
                       flushdb_path,
                       title: 'Flush DB',
                       method: :delete,
                       data: {
-                          confirm: 'Are you sure you want to flush your DB ?'
+                          confirm: 'Are you sure you want to flush DB ?'
                       },
-                      class: 'btn btn-danger nav-link text-white' %>
+                      class: 'btn btn-sm btn-danger nav-link text-white' %>
         </li>
       </ul>
     </div>

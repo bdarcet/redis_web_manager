@@ -4,22 +4,14 @@ module RedisWebManager
   module ApplicationHelper
     def status(value)
       if value
-        content_tag(:kbd, 'Status: ON', class: 'bg-success')
+        content_tag(:kbd, 'ON', class: 'bg-success bounce')
       else
-        content_tag(:kbd, 'Status: OFF', class: 'bg-danger')
+        content_tag(:kbd, 'OFF', class: 'bg-danger bounce')
       end
     end
 
     def url(value)
-      content_tag(:kbd, "Url: #{value}", class: 'bg-dark')
-    end
-
-    def last_save(value)
-      content_tag(:kbd, "Last save: #{value.strftime('%F - %R')}", class: 'bg-secondary')
-    end
-
-    def keys(value)
-      content_tag(:kbd, "Keys: #{value}", class: 'bg-info')
+      content_tag(:kbd, value, class: 'bg-dark')
     end
   end
 end

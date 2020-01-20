@@ -6,25 +6,13 @@ module RedisWebManager
     def index
       @information = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
       @status = info.status
-      @dbsize = info.dbsize
-      @last_save = info.last_save
       @url = connection.id
-    end
-
-    # DELETE /flushdb
-    def flushdb
-      command.flushdb
-      redirect_to root_path
     end
 
     private
 
     def info
       @info ||= RedisWebManager.info
-    end
-
-    def command
-      @command ||= RedisWebManager.command
     end
 
     def connection

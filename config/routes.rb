@@ -2,13 +2,14 @@
 
 RedisWebManager::Engine.routes.draw do
   # Configuration
-  get '/configuration', to: 'configuration#index'
+  get :configuration, to: 'configuration#index'
 
   # Clients
-  get '/clients', to: 'clients#index'
+  get :clients, to: 'clients#index'
 
   # Actions
-  delete '/flushdb', to: 'dashboard#flushdb'
+  delete :flushdb, to: 'actions#flushdb'
+  delete :flushall, to: 'actions#flushall'
 
   # Root
   root 'dashboard#index'
