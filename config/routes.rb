@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 RedisWebManager::Engine.routes.draw do
-  # Root
-  root 'dashboard#index'
+  # Configuration
+  get '/clients', to: 'clients#index'
+
   # Configuration
   get '/configuration', to: 'configuration#index'
 
   # Actions
-  # -------
-  # Flush
   delete '/flushdb', to: 'dashboard#flushdb'
+
+  # Root
+  root 'dashboard#index'
 end

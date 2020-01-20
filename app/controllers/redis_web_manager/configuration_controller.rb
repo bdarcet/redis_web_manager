@@ -2,9 +2,9 @@
 
 module RedisWebManager
   class ConfigurationController < ApplicationController
+    # GET /configuration
     def index
       @configurations = info.configuration
-      # FIXME: Move status + url
       @status = info.status
       @url = connection.id
     end

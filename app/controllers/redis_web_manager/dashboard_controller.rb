@@ -2,13 +2,14 @@
 
 module RedisWebManager
   class DashboardController < ApplicationController
+    # GET /dashboard
     def index
       @information = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
-      # FIXME: Move status + url
       @status = info.status
       @url = connection.id
     end
 
+    # DELETE /flushdb
     def flushdb
       command.flushdb
       redirect_to root_path
