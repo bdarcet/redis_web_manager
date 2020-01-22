@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row my-4">
     <div class="col-12">
-      <kbd><%= @name %></kbd>
+      <%= url(@url) %>
       <%= status(@status) %>
     </div>
   </div>
@@ -47,8 +47,8 @@
           <ul class="list-group list-group-flush">
             <% @information.each do |data| %>
               <li class="list-group-item d-flex justify-content-between">
-                <%= data[:name] %>
-                <span><%= data[:value] %></span>
+                <div class="font-weight-normal"><%= data[:name] %></div>
+                <div class="font-weight-light"><%= data[:value] %></div>
               </li>
             <% end %>
           </ul>

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module RedisWebManager
-  class ConfigurationController < ApplicationController
-    # GET /configuration
+  class ClientsController < ApplicationController
+    # GET /client
     def index
-      @configurations = info.configuration
       @status = info.status
       @url = connection.id
+      @clients = info.clients.map(&:symbolize_keys)
     end
 
     private

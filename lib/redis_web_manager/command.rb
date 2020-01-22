@@ -2,6 +2,10 @@
 
 module RedisWebManager
   class Command < Base
+    def flushall
+      redis.flushall
+    end
+
     def flushdb
       redis.flushdb
     end
