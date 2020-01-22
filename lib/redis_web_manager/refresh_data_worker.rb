@@ -4,10 +4,7 @@ module RedisWebManager
   class RefreshDataWorker < Base
     def perform
       insert_data
-      # FIXME: Olivier, only flush the data when the keys number reach the key number set by the user in the config.
-      # data_keys.size == Configuration.new
-      # If data_keys.size == Configuration.new.user_keys then flush else dont flush and keep saving the keys.
-      # flush_old_data
+      flush_old_data if data_keys.size >= keys_to_save
     end
 
     private
@@ -18,8 +15,13 @@ module RedisWebManager
     end
 
     def flush_old_data
-      oldest_data = data_keys
-      redis.del(oldest_data)
+      data_keys.each_with_index do |data_key, index|
+        index >= keys_to_save ? redis.del(data_key) : nil
+      end
+    end
+
+    def keys_to_save
+      @keys_to_save ||= Configuration.new.keys_to_save
     end
 
     def data
