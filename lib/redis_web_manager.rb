@@ -6,6 +6,7 @@ require 'redis_web_manager/base'
 require 'redis_web_manager/command'
 require 'redis_web_manager/connection'
 require 'redis_web_manager/info'
+require 'redis_web_manager/refresh_data_worker'
 
 module RedisWebManager
   class << self
