@@ -1,6 +1,7 @@
 .bounce {
     animation: bounce .8s ease-out infinite;
     -webkit-animation: bounce .8s ease-out infinite;
+    -moz-animation: bounce .8s ease-out infinite;
 }
 
 @keyframes bounce {
@@ -24,5 +25,17 @@
     }
     to {
         -webkit-box-shadow: 0 0 15px #6c757d;
+    }
+}
+
+@-moz-keyframes bounce {
+    from {
+        -moz-box-shadow: 0 0 15px #6c757d;
+    }
+    50% {
+        -moz-box-shadow: 0 0 30px #6c757d;
+    }
+    to {
+        -moz-box-shadow: 0 0 15px #6c757d;
     }
 }
