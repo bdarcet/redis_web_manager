@@ -9,3 +9,7 @@ Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 Style/DoubleNegation:
   Enabled: false
+Metrics/MethodLength:
+  Max: 20
+Metrics/BlockLength:
+  Max: 20

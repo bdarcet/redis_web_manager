@@ -1,5 +1,11 @@
-<div class="container mt-5">
-  <div class="row">
+<div class="container">
+  <div class="row my-4">
+    <div class="col-12">
+      <%= url(@url) %>
+      <%= status(@status) %>
+    </div>
+  </div>
+  <div class="row my-4">
     <div class="col-sm-12 col-md-8">
       <div class="row mb-4">
         <div class="col-12">
@@ -39,10 +45,10 @@
         </div>
         <div class="card-body p-0">
           <ul class="list-group list-group-flush">
-            <% @informations.each do |data| %>
+            <% @information.each do |data| %>
               <li class="list-group-item d-flex justify-content-between">
-                <%= data[:name] %>
-                <span><%= data[:value] %></span>
+                <div class="font-weight-normal"><%= data[:name] %></div>
+                <div class="font-weight-light"><%= data[:value] %></div>
               </li>
             <% end %>
           </ul>

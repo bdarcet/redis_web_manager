@@ -2,15 +2,11 @@
 
 module RedisWebManager
   class DashboardController < ApplicationController
+    # GET /dashboard
     def index
-      @informations = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
+      @information = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
       @status = info.status
-      @dbsize = info.dbsize
-    end
-
-    def flushdb
-      command.flushdb
-      redirect_to root_path
+      @url = connection.id
     end
 
     private
@@ -19,19 +15,19 @@ module RedisWebManager
       @info ||= RedisWebManager.info
     end
 
-    def command
-      @command ||= RedisWebManager.command
+    def connection
+      @connection ||= RedisWebManager.connection
     end
 
     def stats
       @stats ||= info.stats.symbolize_keys.slice(:redis_version,
+                                                 :redis_mode,
                                                  :os,
                                                  :role,
+                                                 :config_file,
                                                  :connected_clients,
-                                                 :uptime_in_days,
-                                                 :used_memory_human,
-                                                 :used_memory_peak_human,
-                                                 :mem_fragmentation_ratio)
+                                                 :blocked_clients,
+                                                 :uptime_in_days)
     end
   end
 end
