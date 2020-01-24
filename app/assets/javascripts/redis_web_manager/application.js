@@ -15,3 +15,4 @@
 //= require ./popper.js
 //= require ./bootstrap.js
 //= require ./keys.js
+//= require ./chartjs.js
