@@ -6,7 +6,7 @@ module RedisWebManager
     # FIXME : REFACTO CONTROLLER + VIEW + Pagination
     def index
       info_keys = info.keys
-      @keys = info_keys.map.with_index { |key, index| format_key(key, index)}
+      @keys = info_keys.map.with_index { |key, index| format_key(key, index) }
       @types = info_keys.map { |key| info.type(key) }.uniq!
       @status = info.status
       @url = connection.id
@@ -70,39 +70,33 @@ module RedisWebManager
 
     # Get values for Redis Set type
     def get_set(key)
-      values = info.smembers(key).map do |e|
+      info.smembers(key).map do |e|
         type, value = item_type(e)
         { type: type, value: value }
       end
-
-      { values: values }
     end
 
     # Get values for Redis Zset type
     def get_zset(key)
-      values = info.zrange(key, 0, -1, withscores: true).map do |e, score|
+      info.zrange(key, 0, -1, withscores: true).map do |e, score|
         type, value = item_type(e)
         { type: type, value: value, score: score }
       end
-
-      { values: values }
     end
 
     # Get values for Redis Hash type
     def get_hash(key)
-      value = Hash[info.hgetall(key).map do |k,v|
+      Hash[info.hgetall(key).map do |k,v|
         type, value = item_type(v)
         [k, { type: type, value: value }]
       end]
-
-      { value: value }
     end
 
     def get_value(key, opts = {})
       type = info.type(key)
       case type
       when 'string'
-        { value: info.get(key) }
+        info.get(key)
       when 'list'
         get_list(key, opts)
       when 'set'
@@ -112,7 +106,7 @@ module RedisWebManager
       when 'hash'
         get_hash(key)
       else
-        { value: 'Not found' }
+        'Not found'
       end
     end
 
