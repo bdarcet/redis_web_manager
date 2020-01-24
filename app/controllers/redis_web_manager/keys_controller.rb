@@ -21,6 +21,16 @@ module RedisWebManager
       @key = format_key(params[:key], 0)
     end
 
+    def edit
+      @key = format_key(params[:key], 0)
+    end
+
+    def update
+      redirect_to root_path if params[:key].nil? || params[:old_key].nil?
+      command.rename(params[:old_key], params[:key])
+      redirect_to keys_path
+    end
+
     def destroy
       redirect_to root_path if params[:key].nil?
       command.destroy_key(params[:key])

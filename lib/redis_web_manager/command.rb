@@ -13,5 +13,9 @@ module RedisWebManager
     def destroy_key(key)
       redis.del(key)
     end
+
+    def rename(key, new_name)
+      redis.rename(key, new_name)
+    end
   end
 end
