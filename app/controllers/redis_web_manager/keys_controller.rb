@@ -19,10 +19,20 @@ module RedisWebManager
       @key = format_key(params[:key], 0)
     end
 
+    def destroy
+      redirect_to root_path if params[:key].nil?
+      command.destroy_key(params[:key])
+      redirect_to keys_path
+    end
+
     private
 
     def info
       @info ||= RedisWebManager.info
+    end
+
+    def command
+      @command ||= RedisWebManager.command
     end
 
     def item_type(e)
