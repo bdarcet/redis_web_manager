@@ -74,6 +74,10 @@ module RedisWebManager
       @clients ||= redis.client(:list)
     end
 
+    def current_client_id
+      @current_client_id ||= redis.client(:id)
+    end
+
     def redis_web_manager_keys
       @redis_web_manager_keys ||= redis.keys.grep(/^RedisWebManager_/)
     end
