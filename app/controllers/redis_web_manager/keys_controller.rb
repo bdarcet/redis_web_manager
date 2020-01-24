@@ -126,7 +126,9 @@ module RedisWebManager
         id: idx,
         key: key,
         value: get_value(key),
-        type: info.type(key)
+        type: info.type(key),
+        size: info.key_memory_usage(key),
+        expire_at: ''
       }
     end
   end

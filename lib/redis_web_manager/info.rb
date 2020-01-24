@@ -54,6 +54,10 @@ module RedisWebManager
       @latency ||= redis.latency(:doctor)
     end
 
+    def key_memory_usage(key)
+      redis.memory(:usage, key)
+    end
+
     # FIXME: Error when we call the method.
     def memory_usage
       @memory_usage ||= redis.memory(:usage)
@@ -67,7 +71,7 @@ module RedisWebManager
     def stringify_infos
       "#{DateTime.now}_status:#{status}_stats:#{stats}_dbsize:#{dbsize}_configuration:#{configuration}_latency:#{latency}_lastsave:#{last_save}"
     end
-    
+
     def clients
       @clients ||= redis.client(:list)
     end
