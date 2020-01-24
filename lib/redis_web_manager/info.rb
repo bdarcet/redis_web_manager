@@ -54,14 +54,10 @@ module RedisWebManager
       @latency ||= redis.latency(:doctor)
     end
 
-<<<<<<< HEAD
     def key_memory_usage(key)
       redis.memory(:usage, key)
     end
 
-    # FIXME: Error when we call the method.
-=======
->>>>>>> master
     def memory_usage
       @memory_usage ||= redis.info(:memory)
     end
