@@ -4,6 +4,11 @@ RedisWebManager::Engine.routes.draw do
   # Configuration
   get :configuration, to: 'configuration#index'
 
+  # Keys
+  resources :keys
+  get 'keys' => 'keys#index'
+  get 'key' => 'keys#show', as: :show_key
+
   # Clients
   get :clients, to: 'clients#index'
 

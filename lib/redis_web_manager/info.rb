@@ -10,6 +10,38 @@ module RedisWebManager
       @stats ||= redis.info
     end
 
+    def keys
+      @keys ||= redis.keys
+    end
+
+    def type(key)
+      redis.type(key)
+    end
+
+    def get(key)
+      redis.get(key)
+    end
+
+    def llen(key)
+      redis.llen(key)
+    end
+
+    def lrange(key, start, stop)
+      redis.lrange(key, start, stop)
+    end
+
+    def smembers(key)
+      redis.smembers(key)
+    end
+
+    def zrange(key, start, stop, options = {})
+      redis.zrange(key, start, stop, options)
+    end
+
+    def hgetall(key)
+      redis.hgetall(key)
+    end
+
     def dbsize
       @dbsize ||= redis.dbsize
     end

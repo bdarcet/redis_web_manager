@@ -40,4 +40,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '>= 5.2', '< 7'
   spec.add_dependency 'redis', '~> 4.1.0'
+  spec.add_dependency 'multi_json', '~> 1.0'
 end

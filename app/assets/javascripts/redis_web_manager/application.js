@@ -14,3 +14,4 @@
 //= require ./jquery.js
 //= require ./popper.js
 //= require ./bootstrap.js
+//= require ./keys.js
