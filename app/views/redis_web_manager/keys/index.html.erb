@@ -14,7 +14,7 @@
             <%# FIXME: PAGINATION %>
             <div class="card">
               <ul class="list-group list-group-flush">
-                <% v.first(10).each do |data| %>
+                <% v.each do |data| %>
                   <li class="list-group-item">
                     <%= link_to data[:key], show_key_path(key: data[:key]) %>
                   </li>
