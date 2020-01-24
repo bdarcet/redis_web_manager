@@ -6,6 +6,8 @@ RedisWebManager::Engine.routes.draw do
 
   # Keys
   resources :keys
+  get 'keys' => 'keys#index'
+  get 'key' => 'keys#show', as: :show_key
 
   # Clients
   get :clients, to: 'clients#index'

@@ -3,18 +3,20 @@ require 'multi_json'
 
 module RedisWebManager
   class KeysController < ApplicationController
-    # FIXME (BEN): REFACTO CTRLR + VIEW
+    # FIXME : REFACTO CONTROLLER + VIEW + Pagination
     def index
-      @status = info.status
-
-      mkeys = info.keys
+      info_keys = info.keys
       @keys = []
       @types = []
-      mkeys.each do |key, index|
+      info_keys.each do |key, index|
         @types << info.type(key)
         @keys << format_key(key, index)
       end
       @types.uniq!
+    end
+
+    def show
+      @key = format_key(params[:key], 0)
     end
 
     private
@@ -31,6 +33,7 @@ module RedisWebManager
       end
     end
 
+    # Get values for Redis List type
     def get_list(key, opts = {})
       start = opts[:start] ? opts[:start].to_i : 0
       stop  = opts[:stop] ? opts[:stop].to_i : 99
@@ -44,6 +47,7 @@ module RedisWebManager
       { length: length, values: values }
     end
 
+    # Get values for Redis Set type
     def get_set(key)
       values = info.smembers(key).map do |e|
         type, value = item_type(e)
@@ -53,6 +57,7 @@ module RedisWebManager
       { values: values }
     end
 
+    # Get values for Redis Zset type
     def get_zset(key)
       values = info.zrange(key, 0, -1, withscores: true).map do |e, score|
         type, value = item_type(e)
@@ -62,6 +67,7 @@ module RedisWebManager
       { values: values }
     end
 
+    # Get values for Redis Hash type
     def get_hash(key)
       value = Hash[info.hgetall(key).map do |k,v|
         type, value = item_type(v)
