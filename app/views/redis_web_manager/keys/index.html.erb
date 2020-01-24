@@ -1,5 +1,6 @@
-<div class="container mt-5">
-  <div class="row">
+<div class="container">
+  <%= render 'redis_web_manager/shared/status' %>
+  <div class="row my-4">
     <div class="col-sm-12 col-md-12">
       <ul class="nav nav-tabs">
         <% @types.each_with_index do |type, index| %>

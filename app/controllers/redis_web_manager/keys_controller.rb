@@ -13,6 +13,8 @@ module RedisWebManager
         @keys << format_key(key, index)
       end
       @types.uniq!
+      @status = info.status
+      @url = connection.id
     end
 
     def show
@@ -33,6 +35,10 @@ module RedisWebManager
 
     def command
       @command ||= RedisWebManager.command
+    end
+
+    def connection
+      @connection ||= RedisWebManager.connection
     end
 
     def item_type(e)
