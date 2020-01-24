@@ -6,13 +6,8 @@ module RedisWebManager
     # FIXME : REFACTO CONTROLLER + VIEW + Pagination
     def index
       info_keys = info.keys
-      @keys = []
-      @types = []
-      info_keys.each do |key, index|
-        @types << info.type(key)
-        @keys << format_key(key, index)
-      end
-      @types.uniq!
+      @keys = info_keys.map.with_index { |key, index| format_key(key, index)}
+      @types = info_keys.map { |key| info.type(key) }.uniq!
       @status = info.status
       @url = connection.id
     end
