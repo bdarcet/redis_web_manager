@@ -3,6 +3,7 @@
 module RedisWebManager
   class RefreshDataWorker < Base
     def perform
+      puts "=====" + data.to_s
       insert_data
       flush_old_data if data_keys.size >= keys_to_save
     end
@@ -25,7 +26,7 @@ module RedisWebManager
     end
 
     def data
-      @data ||= RedisWebManager::Info.new.stringify_infos
+      @data ||= RedisWebManager::Info.new.infos_to_save
     end
 
     def insertion_interval
