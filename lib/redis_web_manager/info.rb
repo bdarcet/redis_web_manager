@@ -54,7 +54,6 @@ module RedisWebManager
       @latency ||= redis.latency(:doctor)
     end
 
-    # FIXME: Error when we call the method.
     def memory_usage
       @memory_usage ||= redis.info(:memory)
     end
@@ -63,13 +62,16 @@ module RedisWebManager
       @last_save ||= Time.at(redis.lastsave)
     end
 
-    # FIXME: Olivier, Add Memory usage once it's fixed. memoryusage:#{memory_usage}
     def infos_to_save
       { source: 'Redis_web_manager', date: DateTime.now, memory_usage: memory_usage }.to_json
     end
 
     def clients
       @clients ||= redis.client(:list)
+    end
+
+    def redis_web_manager_keys
+      @redis_web_manager_keys ||= redis.keys.grep(/^RedisWebManager_/)
     end
   end
 end
