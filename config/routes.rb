@@ -5,9 +5,9 @@ RedisWebManager::Engine.routes.draw do
   get :configuration, to: 'configuration#index'
 
   # Keys
-  resources :keys
   get 'keys' => 'keys#index'
   get 'key' => 'keys#show', as: :show_key
+  delete 'keys' => 'keys#destroy', as: :destroy_key
 
   # Clients
   get :clients, to: 'clients#index'

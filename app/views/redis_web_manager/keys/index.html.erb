@@ -17,6 +17,7 @@
                 <% v.each do |data| %>
                   <li class="list-group-item">
                     <%= link_to data[:key], show_key_path(key: data[:key]) %>
+                    <%= link_to 'Delete', destroy_key_path(key: data[:key]), method: :delete, data: {confirm: 'Are you sure ?'}, title: "Delete #{data[:key]}", class: 'btn btn-sm btn-danger ml-2' %>
                   </li>
                 <% end %>
               </ul>
