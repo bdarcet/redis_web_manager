@@ -4,20 +4,20 @@ module RedisWebManager
   class ActionsController < ApplicationController
     # DELETE /flushdb
     def flushdb
-      command.flushdb
+      action.flushdb
       redirect_to root_path
     end
 
     # DELETE /flushall
     def flushall
-      command.flushall
+      action.flushall
       redirect_to root_path
     end
 
     private
 
-    def command
-      @command ||= RedisWebManager.command
+    def action
+      @action ||= RedisWebManager.action
     end
   end
 end

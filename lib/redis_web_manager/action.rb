@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RedisWebManager
-  class Command < Base
+  class Action < Base
     def flushall
       redis.flushall
     end
@@ -10,12 +10,12 @@ module RedisWebManager
       redis.flushdb
     end
 
-    def destroy_key(key)
+    def del(key)
       redis.del(key)
     end
 
-    def rename(key, new_name)
-      redis.rename(key, new_name)
+    def rename(old_name, new_name)
+      redis.rename(old_name, new_name)
     end
   end
 end

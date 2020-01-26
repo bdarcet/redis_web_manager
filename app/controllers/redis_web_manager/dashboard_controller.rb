@@ -7,7 +7,6 @@ module RedisWebManager
       @information = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
       @status = info.status
       @url = connection.id
-      @memory_usage_data = MemoryUsageService.new.data
     end
 
     private
