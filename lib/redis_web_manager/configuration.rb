@@ -12,5 +12,7 @@ module RedisWebManager
       @interval = 10
       @lifespan = 30
     end
+
+    # FIXME: check configuration
   end
 end

@@ -6,11 +6,7 @@ require 'redis_web_manager/action'
 require 'redis_web_manager/configuration'
 require 'redis_web_manager/connection'
 require 'redis_web_manager/info'
-require 'redis_web_manager/stat'
-require 'redis_web_manager/stats/client'
-require 'redis_web_manager/stats/command'
-require 'redis_web_manager/stats/latency'
-require 'redis_web_manager/stats/memory'
+require 'redis_web_manager/data'
 
 module RedisWebManager
   class << self
