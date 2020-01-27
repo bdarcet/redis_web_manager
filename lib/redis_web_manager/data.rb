@@ -4,8 +4,8 @@ module RedisWebManager
   class Data < Base
     BASE = 'RedisWebManager'
 
-    def data
-      data.map { |key| redis.get(key) }
+    def keys
+      data.map { |key| JSON.parse(redis.get(key)) }
     end
 
     def perform
@@ -17,13 +17,12 @@ module RedisWebManager
 
     def insert_data
       timestamp = Time.now.to_time.to_i
-      redis.set("#{BASE}_#{timestamp}", serialize.to_s)
+      redis.set("#{BASE}_#{timestamp}", serialize.to_json)
     end
 
     def flush_old_data
-      lifespan = RedisWebManager.configuration.lifespan
-      keys.each do |key|
-        tmp = key.tr("#{BASE}_", '')
+      data.each do |key|
+        tmp = format_key(key)
         next if tmp.nil?
         time = Time.at(tmp.to_i)
         time_lifespan = Time.now + lifespan.days
@@ -31,8 +30,16 @@ module RedisWebManager
       end
     end
 
-    def keys
-      @keys ||= redis.scan_each(match: "#{BASE}_*").to_a
+    def data
+      @data ||= redis.scan_each(match: "#{BASE}_*").to_a
+    end
+
+    def lifespan
+      @lifespan ||= RedisWebManager.configuration.lifespan
+    end
+
+    def format_key(key)
+      key.tr("#{BASE}_", '')
     end
 
     def serialize
