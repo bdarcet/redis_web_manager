@@ -9,26 +9,12 @@ module RedisWebManager
     end
 
     def perform
-      flush_old_data
-      insert_data
+      now = Time.now.to_i
+      seconds = (now + lifespan.days).to_i - now
+      redis.setex("#{BASE}_#{now}", seconds, serialize.to_json)
     end
 
     private
-
-    def insert_data
-      timestamp = Time.now.to_time.to_i
-      redis.set("#{BASE}_#{timestamp}", serialize.to_json)
-    end
-
-    def flush_old_data
-      data.each do |key|
-        tmp = format_key(key)
-        next if tmp.nil?
-        time = Time.at(tmp.to_i)
-        time_lifespan = Time.now + lifespan.days
-        redis.del(key) if time > time_lifespan
-      end
-    end
 
     def data
       @data ||= redis.scan_each(match: "#{BASE}_*").to_a
