@@ -16,3 +16,4 @@
 //= require ./bootstrap.js
 //= require ./keys.js
 //= require ./chartjs.js
+//= require ./dashboard.js

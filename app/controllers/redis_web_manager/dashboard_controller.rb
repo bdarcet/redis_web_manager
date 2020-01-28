@@ -7,7 +7,9 @@ module RedisWebManager
       @information = stats.map { |k, v| { name: k.to_s.humanize, value: v } }
       @status = info.status
       @url = connection.id
-      @memory_usage_data = MemoryUsageService.new.data
+      @memory = keys_by_type(data.keys, :memory)
+      @cpu = keys_by_type(data.keys, :cpu)
+      @client = keys_by_type(data.keys, :client)
     end
 
     private
@@ -20,15 +22,26 @@ module RedisWebManager
       @connection ||= RedisWebManager.connection
     end
 
+    def data
+      @data ||= RedisWebManager.data
+    end
+
     def stats
       @stats ||= info.stats.symbolize_keys.slice(:redis_version,
                                                  :redis_mode,
+                                                 :arch_bits,
+                                                 :process_id,
                                                  :os,
                                                  :role,
                                                  :config_file,
                                                  :connected_clients,
                                                  :blocked_clients,
-                                                 :uptime_in_days)
+                                                 :uptime_in_days,
+                                                 :used_memory_human)
+    end
+
+    def keys_by_type(keys, value)
+      keys.map { |key| key.slice(:date, value) }
     end
   end
 end

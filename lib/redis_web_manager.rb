@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 require 'redis_web_manager/engine'
-require 'redis_web_manager/configuration'
 require 'redis_web_manager/base'
-require 'redis_web_manager/command'
+require 'redis_web_manager/action'
+require 'redis_web_manager/configuration'
 require 'redis_web_manager/connection'
 require 'redis_web_manager/info'
-require 'redis_web_manager/refresh_data_worker'
+require 'redis_web_manager/data'
 
 module RedisWebManager
   class << self
-    # FIXME: Move configuration?
     attr_writer :configuration
 
     def configuration
@@ -29,8 +28,12 @@ module RedisWebManager
       RedisWebManager::Connection.new
     end
 
-    def command
-      RedisWebManager::Command.new
+    def action
+      RedisWebManager::Action.new
+    end
+
+    def data
+      RedisWebManager::Data.new
     end
   end
 end

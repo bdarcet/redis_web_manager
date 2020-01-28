@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $(".nav-tabs a").click(function () {
+$(document).ready(function () {
+    $('.nav-tabs a').on('click', function () {
         $(this).tab('show');
     });
 });

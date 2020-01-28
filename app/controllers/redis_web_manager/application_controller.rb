@@ -4,16 +4,12 @@ module RedisWebManager
   class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
-    before_action :authenticate_user!
+    before_action :authenticated?, if: :authenticate
 
     private
 
-    def authenticate_user!
-      if defined?(super)
-        super
-      elsif authenticate
-        instance_exec(&authenticate)
-      end
+    def authenticated?
+      instance_exec(&authenticate)
     end
 
     def authenticate

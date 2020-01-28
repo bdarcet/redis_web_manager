@@ -26,15 +26,18 @@ module RedisWebManager
     end
 
     def update
-      redirect_to root_path if params[:key].nil? || params[:old_key].nil?
-      command.rename(params[:old_key], params[:key])
-      redirect_to keys_path
+      old_key = params[:old_name].presence
+      new_name = params[:new_name].presence
+      redirect_to root_path if old_key.nil? || new_name.nil?
+      action.rename(old_key, new_name)
+      redirect_to keys_url
     end
 
     def destroy
-      redirect_to root_path if params[:key].nil?
-      command.destroy_key(params[:key])
-      redirect_to keys_path
+      key = params[:key].presence
+      redirect_to root_path if key.nil?
+      action.del(key)
+      redirect_to keys_url
     end
 
     private
@@ -43,8 +46,8 @@ module RedisWebManager
       @info ||= RedisWebManager.info
     end
 
-    def command
-      @command ||= RedisWebManager.command
+    def action
+      @action ||= RedisWebManager.action
     end
 
     def connection
