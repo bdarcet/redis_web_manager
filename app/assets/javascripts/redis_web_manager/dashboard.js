@@ -35,12 +35,12 @@ $(document).ready(function () {
     function renderMemory(node, data) {
         const labels = data.map(d => parseDate(d['date']));
         const memories = data.map(d => d['memory']);
-        const used_memory = memories.map(c => parseFloat(c['used_memory']));
-        const used_memory_rss = memories.map(c => parseFloat(c['used_memory_rss']));
-        const used_memory_peak = memories.map(c => parseFloat(c['used_memory_peak']));
-        const used_memory_overhead = memories.map(c => parseFloat(c['used_memory_overhead']));
-        const used_memory_startup = memories.map(c => parseFloat(c['used_memory_startup']));
-        const used_memory_dataset = memories.map(c => parseFloat(c['used_memory_dataset']));
+        const used_memory = memories.map(c => parseInt(c['used_memory'], 10));
+        const used_memory_rss = memories.map(c => parseInt(c['used_memory_rss'], 10));
+        const used_memory_peak = memories.map(c => parseInt(c['used_memory_peak'], 10));
+        const used_memory_overhead = memories.map(c => parseInt(c['used_memory_overhead'], 10));
+        const used_memory_startup = memories.map(c => parseInt(c['used_memory_startup'], 10));
+        const used_memory_dataset = memories.map(c => parseInt(c['used_memory_dataset'], 10));
         return new Chart(node.getContext('2d'), {
             type: 'line',
             responsive: true,
@@ -120,10 +120,10 @@ $(document).ready(function () {
     function renderCpu(node, data) {
         const labels = data.map(d => parseDate(d['date']));
         const cpus = data.map(d => d['cpu']);
-        const used_cpu_sys = cpus.map(c => parseFloat(c['used_cpu_sys']));
-        const used_cpu_user = cpus.map(c => parseFloat(c['used_cpu_user']));
-        const used_cpu_sys_children = cpus.map(c => parseFloat(c['used_cpu_sys_children']));
-        const used_cpu_user_children = cpus.map(c => parseFloat(c['used_cpu_user_children']));
+        const used_cpu_sys = cpus.map(c => parseInt(c['used_cpu_sys'], 10));
+        const used_cpu_user = cpus.map(c => parseInt(c['used_cpu_user']));
+        const used_cpu_sys_children = cpus.map(c => parseInt(c['used_cpu_sys_children'], 10));
+        const used_cpu_user_children = cpus.map(c => parseInt(c['used_cpu_user_children'], 10));
         return new Chart(node.getContext('2d'), {
             type: 'line',
             responsive: true,
