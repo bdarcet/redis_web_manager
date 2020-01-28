@@ -255,9 +255,6 @@ $(document).ready(function () {
     }
 
     function humanSecond(value) {
-        //FIXME bug graph
-        const date = new Date(null);
-        date.setSeconds(value);
-        return date.toDateString();
+        return `${value} sec`;
     }
 });
