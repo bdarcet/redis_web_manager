@@ -5,7 +5,7 @@ module RedisWebManager
     BASE = 'RedisWebManager'
 
     def keys
-      data.map { |key| JSON.parse(redis.get(key)) }
+      data.map { |key| JSON.parse(redis.get(key), symbolize_names: true) }
     end
 
     def perform

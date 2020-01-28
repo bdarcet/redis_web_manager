@@ -31,5 +31,9 @@ module RedisWebManager
     def action
       RedisWebManager::Action.new
     end
+
+    def data
+      RedisWebManager::Data.new
+    end
   end
 end
