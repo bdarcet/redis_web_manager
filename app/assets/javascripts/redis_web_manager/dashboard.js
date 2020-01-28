@@ -92,7 +92,27 @@ $(document).ready(function () {
                 ]
             },
             options: {
-                legend: { position: 'bottom' }
+                legend: {
+                    position: 'bottom'
+                },
+                scales: {
+                    yAxes: [
+                        {
+                            ticks: {
+                                callback: function (value) {
+                                    return humanSize(value);
+                                }
+                            }
+                        }
+                    ]
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function (props) {
+                            return humanSize(props['value']);
+                        }
+                    }
+                }
             }
         });
     }
@@ -141,7 +161,27 @@ $(document).ready(function () {
                 ]
             },
             options: {
-                legend: { position: 'bottom' }
+                legend: {
+                    position: 'bottom'
+                },
+                scales: {
+                    yAxes: [
+                        {
+                            ticks: {
+                                callback: function (value) {
+                                    return humanSecond(parseInt(value, 10));
+                                }
+                            }
+                        }
+                    ]
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function (props) {
+                            return humanSecond(parseInt(props['value'], 10));
+                        }
+                    }
+                }
             }
         });
     }
@@ -174,12 +214,32 @@ $(document).ready(function () {
                 ]
             },
             options: {
-                legend: { position: 'bottom' }
+                legend: {
+                    position: 'bottom'
+                }
             }
         });
     }
 
     function parseDate(value) {
         return new Date(value).toDateString();
+    }
+
+    function humanSize(size) {
+        if (size < 1024) {
+            return size + ' B';
+        }
+        const i = Math.floor(Math.log(size) / Math.log(1024));
+        const num = (size / Math.pow(1024, i));
+        const round = Math.round(num);
+        const value = round < 10 ? num.toFixed(2) : round < 100 ? num.toFixed(1) : round;
+        return `${value} ${'KMGTPEZY'[i - 1]}B`
+    }
+
+    function humanSecond(value) {
+        //FIXME bug graph
+        const date = new Date(null);
+        date.setSeconds(value);
+        return date.toDateString();
     }
 });
