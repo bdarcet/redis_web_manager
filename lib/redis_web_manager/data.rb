@@ -14,6 +14,10 @@ module RedisWebManager
       redis.setex("#{BASE}_#{now}", seconds, serialize.to_json)
     end
 
+    def flush
+      data.map { |key| redis.del(key) }
+    end
+
     private
 
     def data

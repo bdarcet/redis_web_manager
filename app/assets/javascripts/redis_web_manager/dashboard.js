@@ -222,12 +222,30 @@ $(document).ready(function () {
     }
 
     function parseDate(value) {
-        return new Date(value).toDateString();
+        const date = new Date(value);
+        const year = date.getFullYear();
+        let month = date.getMonth()+1;
+        let day = date.getDate();
+        let hour = date.getHours();
+        let minute = date.getMinutes();
+        if (day < 10) {
+            day = `0${day}`;
+        }
+        if (month < 10) {
+            month = `0${month}`;
+        }
+        if (hour < 10) {
+            hour = `0${hour}`;
+        }
+        if (minute < 10) {
+            minute = `0${minute}`;
+        }
+        return `${day}/${month}/${year} ${hour}:${minute}`;
     }
 
     function humanSize(size) {
         if (size < 1024) {
-            return size + ' B';
+            return `${size} B`;
         }
         const i = Math.floor(Math.log(size) / Math.log(1024));
         const num = (size / Math.pow(1024, i));
