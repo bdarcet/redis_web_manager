@@ -6,7 +6,7 @@ class MemoryUsageService
 
   # Methods
   def initialize
-    @redis = RedisWebManager.configuration.redis
+    @redis = RedisWebManager.redis
   end
 
   def data

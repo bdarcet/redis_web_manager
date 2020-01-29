@@ -3,21 +3,24 @@
 require 'redis_web_manager/engine'
 require 'redis_web_manager/base'
 require 'redis_web_manager/action'
-require 'redis_web_manager/configuration'
 require 'redis_web_manager/connection'
 require 'redis_web_manager/info'
 require 'redis_web_manager/data'
+require 'redis'
 
 module RedisWebManager
   class << self
-    attr_writer :configuration
+    # Instance of redis
+    mattr_accessor :redis, default: ::Redis.new
 
-    def configuration
-      @configuration ||= Configuration.new
-    end
+    mattr_accessor :authenticate, default: nil
+
+    mattr_accessor :interval, default: 5.minutes
+
+    mattr_accessor :lifespan, default: 30.days
 
     def configure
-      yield(configuration)
+      yield self
     end
 
     def info

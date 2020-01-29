@@ -5,7 +5,7 @@ module RedisWebManager
     private
 
     def redis
-      @redis ||= RedisWebManager.configuration.redis
+      @redis ||= RedisWebManager.redis
     end
   end
 end

@@ -25,7 +25,7 @@ module RedisWebManager
     end
 
     def lifespan
-      @lifespan ||= RedisWebManager.configuration.lifespan
+      @lifespan ||= RedisWebManager.lifespan
     end
 
     def format_key(key)

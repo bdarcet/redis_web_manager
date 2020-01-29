@@ -41,7 +41,7 @@ module RedisWebManager
     end
 
     def keys_by_type(keys, value)
-      keys.map { |key| key.slice(:date, value) }
+      keys.map { |key| key.slice(:date, value) }.sort_by { |key| key[:date] }
     end
   end
 end
