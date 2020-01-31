@@ -2,7 +2,6 @@
 
 module RedisWebManager
   module ApplicationHelper
-    # Pagy
     require 'pagy'
 
     include Pagy::Frontend

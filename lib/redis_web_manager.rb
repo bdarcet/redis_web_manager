@@ -23,10 +23,10 @@ module RedisWebManager
 
     def check_attrs
       unless redis.is_a?(::Redis)
-        raise ArgumentError 'Invalid Redis instance, use like that Redis.new'
+        raise ArgumentError, 'Invalid Redis instance, use like that Redis.new'
       end
       unless lifespan.is_a?(ActiveSupport::Duration)
-        raise ArgumentError 'Invalid lifespan, use like that 15.days, 15.minutes etc'
+        raise ArgumentError, 'Invalid lifespan, use like that 15.days, 15.minutes etc'
       end
     end
   end
