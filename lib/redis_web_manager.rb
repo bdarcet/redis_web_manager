@@ -15,8 +15,6 @@ module RedisWebManager
 
     mattr_accessor :authenticate, default: nil
 
-    mattr_accessor :interval, default: 5.minutes
-
     mattr_accessor :lifespan, default: 30.days
 
     def configure
