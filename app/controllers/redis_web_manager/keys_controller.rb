@@ -11,15 +11,7 @@ module RedisWebManager
     include ::Pagy::Backend
 
     def index
-      info_keys = info.keys
-      @keys = []
-      @types = []
-      info_keys.each do |key, index|
-        @types << info.type(key)
-        @keys << format_key(key, index)
-      end
-      @types.uniq!
-
+      @keys = info.keys.map { |key, index| format_key(key, index) }
       # Status & Url
       @status = info.status
       @url = connection.id
