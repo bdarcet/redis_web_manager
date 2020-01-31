@@ -11,7 +11,7 @@
               </h5>
             </div>
             <div class="card-body">
-              <canvas id="memory" width="800" height="400" data-canvas="<%= @memory.to_json %>"></canvas>
+              <%= graph_canvas(@memory, :memory) %>
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
               </h5>
             </div>
             <div class="card-body">
-              <canvas id="cpu" width="800" height="400" data-canvas="<%= @cpu.to_json %>"></canvas>
+              <%= graph_canvas(@cpu, :cpu) %>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
               </h5>
             </div>
             <div class="card-body">
-              <canvas id="client" width="800" height="400" data-canvas="<%= @client.to_json %>"></canvas>
+              <%= graph_canvas(@client, :client) %>
             </div>
           </div>
         </div>
