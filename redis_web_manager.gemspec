@@ -39,6 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', '~> 0.18'
 
   spec.add_dependency 'multi_json', '~> 1.0'
+  spec.add_dependency 'pagy'
   spec.add_dependency 'rails', '>= 5.2', '< 7'
   spec.add_dependency 'redis', '~> 4.1.0'
 end
