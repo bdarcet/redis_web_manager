@@ -2,6 +2,11 @@
 
 module RedisWebManager
   module ApplicationHelper
+    # Pagy
+    require 'pagy'
+
+    include Pagy::Frontend
+
     def status(value)
       if value
         content_tag(:kbd, 'ON', class: 'bg-success bounce')

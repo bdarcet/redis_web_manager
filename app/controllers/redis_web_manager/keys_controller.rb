@@ -1,20 +1,25 @@
 # frozen_string_literal: true
+
 require 'multi_json'
+require 'pagy'
+require 'pagy/extras/array'
+require 'pagy/extras/bootstrap'
 
 module RedisWebManager
   class KeysController < ApplicationController
-    # FIXME : REFACTO CONTROLLER + VIEW + Pagination
+    # Pagy
+    include ::Pagy::Backend
+
     def index
-      info_keys = info.keys
-      @keys = []
-      @types = []
-      info_keys.each do |key, index|
-        @types << info.type(key)
-        @keys << format_key(key, index)
-      end
-      @types.uniq!
+      # Keys
+      @keys = info.keys.map { |key, index| format_key(key, index) }.sort { |a, b| a[:key] <=> b[:key] }
+
+      # Status & Url
       @status = info.status
       @url = connection.id
+
+      # Pagination
+      @pagy, @keys = pagy_array(@keys)
     end
 
     def show
