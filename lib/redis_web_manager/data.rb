@@ -10,7 +10,7 @@ module RedisWebManager
 
     def perform
       now = Time.now.to_i
-      seconds = (now + lifespan.days.to_i) - now
+      seconds = (now + lifespan.to_i) - now
       redis.setex("#{BASE}_#{now}", seconds, serialize.to_json)
     end
 
