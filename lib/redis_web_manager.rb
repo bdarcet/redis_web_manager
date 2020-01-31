@@ -10,11 +10,9 @@ require 'redis'
 
 module RedisWebManager
   class << self
-    # Instance of redis
+    # FIXME: check mattr_accessor
     mattr_accessor :redis, default: ::Redis.new
-
     mattr_accessor :authenticate, default: nil
-
     mattr_accessor :lifespan, default: 30.days
 
     def configure
