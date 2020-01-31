@@ -11,7 +11,7 @@
               </h5>
             </div>
             <div class="card-body">
-              <%= graph_canvas(@memory) %>
+              <%= graph_canvas(@memory, :memory) %>
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
               </h5>
             </div>
             <div class="card-body">
-              <%= graph_canvas(@cpu) %>
+              <%= graph_canvas(@cpu, :cpu) %>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
               </h5>
             </div>
             <div class="card-body">
-              <%= graph_canvas(@client) %>
+              <%= graph_canvas(@client, :client) %>
             </div>
           </div>
         </div>
