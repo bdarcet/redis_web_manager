@@ -14,18 +14,6 @@ module RedisWebManager
 
     private
 
-    def info
-      @info ||= RedisWebManager.info
-    end
-
-    def connection
-      @connection ||= RedisWebManager.connection
-    end
-
-    def data
-      @data ||= RedisWebManager.data
-    end
-
     def stats
       @stats ||= info.stats.symbolize_keys.slice(:redis_version,
                                                  :redis_mode,

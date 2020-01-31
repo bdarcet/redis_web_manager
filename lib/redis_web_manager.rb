@@ -9,31 +9,28 @@ require 'redis_web_manager/data'
 require 'redis'
 
 module RedisWebManager
-  class << self
-    # FIXME: check mattr_accessor
     mattr_accessor :redis, default: ::Redis.new
     mattr_accessor :authenticate, default: nil
     mattr_accessor :lifespan, default: 30.days
 
-    def configure
-      yield self
-    end
+    class << self
 
-    # FIXME: Move methods
-    def info
-      RedisWebManager::Info.new
-    end
+      def configure
+        yield self if block_given?
+        check_attrs
+      end
 
-    def connection
-      RedisWebManager::Connection.new
-    end
+      private
 
-    def action
-      RedisWebManager::Action.new
-    end
+      def check_attrs
+        # FIXME: add better message
+        unless redis.kind_of?(::Redis)
+          raise ArgumentError ""
+        end
 
-    def data
-      RedisWebManager::Data.new
+        unless lifespan.kind_of?(ActiveSupport::Duration)
+          raise ArgumentError ""
+        end
+      end
     end
-  end
 end

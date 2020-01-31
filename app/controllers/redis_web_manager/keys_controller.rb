@@ -42,18 +42,6 @@ module RedisWebManager
 
     private
 
-    def info
-      @info ||= RedisWebManager.info
-    end
-
-    def action
-      @action ||= RedisWebManager.action
-    end
-
-    def connection
-      @connection ||= RedisWebManager.connection
-    end
-
     def item_type(e)
       begin
         ['json', MultiJson.decode(e)]

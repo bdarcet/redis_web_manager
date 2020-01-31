@@ -13,11 +13,5 @@ module RedisWebManager
       action.flushall
       redirect_to root_path
     end
-
-    private
-
-    def action
-      @action ||= RedisWebManager.action
-    end
   end
 end

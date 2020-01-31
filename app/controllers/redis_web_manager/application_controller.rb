@@ -15,5 +15,21 @@ module RedisWebManager
     def authenticate
       RedisWebManager.authenticate
     end
+
+    def info
+      @info ||= RedisWebManager::Info.new
+    end
+
+    def connection
+      @connection ||= RedisWebManager::Connection.new
+    end
+
+    def action
+      @action ||= RedisWebManager::Action.new
+    end
+
+    def data
+      @data ||= RedisWebManager::Data.new
+    end
   end
 end

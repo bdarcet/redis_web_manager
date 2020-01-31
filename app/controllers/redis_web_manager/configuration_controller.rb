@@ -8,15 +8,5 @@ module RedisWebManager
       @status = info.status
       @url = connection.id
     end
-
-    private
-
-    def info
-      @info ||= RedisWebManager.info
-    end
-
-    def connection
-      @connection ||= RedisWebManager.connection
-    end
   end
 end
