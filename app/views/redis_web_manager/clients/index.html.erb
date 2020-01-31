@@ -20,7 +20,6 @@
                 <th>Flag</th>
                 <th>Event</th>
                 <th>Last command</th>
-                <th>Block</th>
               </tr>
               </thead>
               <tbody>
@@ -46,11 +45,6 @@
                   </td>
                   <td class="align-middle">
                     <code><%= c[:cmd] %></code>
-                  </td>
-                  <td class="align-middle">
-                    <button class="<%= @current_client_id == c[:id] ? 'btn btn-danger' : 'btn btn-danger disabled' %>">
-                      Block
-                    </button>
                   </td>
                 </tr>
               <% end %>

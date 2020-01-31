@@ -7,7 +7,6 @@ module RedisWebManager
       @status = info.status
       @url = connection.id
       @clients = info.clients.map(&:symbolize_keys)
-      @current_client_id = info.current_client_id
     end
   end
 end

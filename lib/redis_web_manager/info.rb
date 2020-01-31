@@ -53,9 +53,5 @@ module RedisWebManager
     def clients
       @clients ||= redis.client(:list)
     end
-
-    def current_client_id
-      @current_client_id ||= redis.client(:id)
-    end
   end
 end
