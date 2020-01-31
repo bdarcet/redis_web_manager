@@ -19,6 +19,7 @@ module RedisWebManager
       yield self
     end
 
+    # FIXME: Move methods
     def info
       RedisWebManager::Info.new
     end
