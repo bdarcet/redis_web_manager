@@ -11,7 +11,9 @@ module RedisWebManager
     include ::Pagy::Backend
 
     def index
-      @keys = info.keys.map { |key, index| format_key(key, index) }
+      # Keys
+      @keys = info.keys.map { |key, index| format_key(key, index) }.sort { |a, b| a[:key] <=> b[:key] }
+
       # Status & Url
       @status = info.status
       @url = connection.id

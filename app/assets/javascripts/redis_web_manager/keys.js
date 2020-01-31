@@ -7,4 +7,8 @@ $(document).ready(function () {
         window.location.hash = this.target.hash;
         $(this).tab('show');
     });
+
+    $('#sort').on('click', function () {
+        console.log('e')
+    })
 });
