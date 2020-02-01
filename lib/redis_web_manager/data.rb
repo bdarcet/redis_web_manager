@@ -28,10 +28,6 @@ module RedisWebManager
       @lifespan ||= RedisWebManager.lifespan
     end
 
-    def format_key(key)
-      key.tr("#{BASE}_", '')
-    end
-
     def serialize
       {
         date: Time.now,
