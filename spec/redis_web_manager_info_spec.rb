@@ -20,6 +20,16 @@ RSpec.describe RedisWebManager::Info do
       expect(info.keys).to be_a_kind_of(Array)
     end
 
+    it 'returns a string value (type)' do
+      redis = Redis.new
+      redis.set('test', 'test')
+      expect(info.type('test')).to eql('string')
+    end
+
+    it 'returns a test value (get)' do
+      expect(info.get('test')).to eql('test')
+    end
+
     it 'returns a Integer class (dbsize)' do
       expect(info.dbsize).to be_a_kind_of(Integer)
     end
