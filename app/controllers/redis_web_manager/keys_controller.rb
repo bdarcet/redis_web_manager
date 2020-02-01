@@ -122,7 +122,8 @@ module RedisWebManager
         key: key,
         expire: info.expire(key),
         value: get_value(key),
-        type: info.type(key)
+        type: info.type(key),
+        memory: info.key_memory_usage(key)
       }
     end
   end
