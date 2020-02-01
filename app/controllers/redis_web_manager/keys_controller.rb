@@ -7,7 +7,6 @@ require 'pagy/extras/bootstrap'
 
 module RedisWebManager
   class KeysController < ApplicationController
-    # Pagy
     include ::Pagy::Backend
 
     def index
@@ -121,6 +120,7 @@ module RedisWebManager
       {
         id: idx,
         key: key,
+        expire: info.expire(key),
         value: get_value(key),
         type: info.type(key)
       }
