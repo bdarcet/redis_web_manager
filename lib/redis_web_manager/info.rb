@@ -18,6 +18,10 @@ module RedisWebManager
       redis.type(key)
     end
 
+    def expire(key)
+      redis.ttl(key)
+    end
+
     def get(key)
       redis.get(key)
     end
