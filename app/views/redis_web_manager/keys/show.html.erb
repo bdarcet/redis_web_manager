@@ -9,17 +9,17 @@
       <p>
         <code><%= @key[:value] %></code>
       </p>
-      <label>Expires at:</label>
+      <label>Expires in:</label>
       <p>
-        <code><%#= expired_at(@entry&.expires_at) %></code>
+        <code><%= expire(@key[:expire]) %></code>
       </p>
       <label>Size:</label>
       <p>
-        <code><%#= number_to_human_size(@entry&.size, locale: :en) %></code>
+        <code><%= number_to_human_size(@key[:memory], locale: :en) %></code>
       </p>
       <p>
-        <%#= link_to 'Delete', destroy_key_path(key: @key), method: :delete, data: {confirm: 'Are you sure ?'}, title: "Delete #{@key}", class: 'btn btn-sm btn-danger w-100 mb-2' %>
-        <%#= link_to 'Back', root_path, title: 'View keys', class: 'btn btn-sm btn-primary w-100' %>
+        <%= link_to 'Delete', destroy_key_path(key: @key[:key]), method: :delete, data: {confirm: 'Are you sure ?'}, title: "Delete #{@key}", class: 'btn btn-sm btn-danger w-100 mb-2' %>
+        <%= link_to 'Back', keys_path, title: 'View keys', class: 'btn btn-sm btn-primary w-100' %>
       </p>
     </div>
   </div>
