@@ -13,7 +13,7 @@
             <table class="table">
               <thead>
               <tr>
-                <th id="sort">Name</th>
+                <th>Name</th>
                 <th>Expiration Date</th>
                 <th>Size</th>
                 <th>Type</th>
@@ -21,11 +21,11 @@
               </tr>
               </thead>
               <tbody>
-              <% @keys.each_with_index do |key| %>
+              <% @keys.each do |key| %>
                 <tr>
-                  <td><%= link_to (key[:key]).truncate(45), show_key_path(key: key[:key]) %></td>
+                  <td><%= link_to (key[:key]).truncate(50), show_key_path(key: key[:key]) %></td>
                   <td><%= expire(key[:expire]) %></td>
-                  <td><code><%= number_to_human_size(key[:memory], locale: :en) %></code></td>
+                  <td><code><%= number_to_human_size(key[:memory]) %></code></td>
                   <td><code><%= key[:type] %></code></td>
                   <td>
                     <%= link_to 'Edit', edit_key_path(key: key[:key]), title: "Edit #{key[:key]}", class: 'btn btn-sm btn-primary ml-2' %>

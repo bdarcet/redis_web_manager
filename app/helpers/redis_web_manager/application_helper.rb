@@ -4,7 +4,7 @@ module RedisWebManager
   module ApplicationHelper
     require 'pagy'
 
-    include Pagy::Frontend
+    include ::Pagy::Frontend
 
     def status(value)
       if value
