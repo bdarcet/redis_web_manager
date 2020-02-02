@@ -32,14 +32,14 @@ module RedisWebManager
     def update
       old_key = params[:old_name].presence
       new_name = params[:new_name].presence
-      redirect_to root_path if old_key.nil? || new_name.nil?
+      redirect_to root_url if old_key.nil? || new_name.nil?
       action.rename(old_key, new_name)
       redirect_to keys_url
     end
 
     def destroy
       key = params[:key].presence
-      redirect_to root_path if key.nil?
+      redirect_to root_url if key.nil?
       action.del(key)
       redirect_to keys_url
     end

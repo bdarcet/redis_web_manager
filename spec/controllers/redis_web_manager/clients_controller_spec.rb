@@ -2,7 +2,9 @@
 
 require 'rails_helper'
 
-RSpec.describe RedisWebManager::DashboardController, type: :controller do
+RSpec.describe RedisWebManager::ClientsController, type: :controller do
+  routes { RedisWebManager::Engine.routes }
+
   describe 'GET #index' do
     it 'returns a success response' do
       get :index

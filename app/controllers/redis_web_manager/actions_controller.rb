@@ -5,13 +5,13 @@ module RedisWebManager
     # DELETE /flushdb
     def flushdb
       action.flushdb
-      redirect_to root_path
+      redirect_to root_url
     end
 
     # DELETE /flushall
     def flushall
       action.flushall
-      redirect_to root_path
+      redirect_to root_url
     end
   end
 end
