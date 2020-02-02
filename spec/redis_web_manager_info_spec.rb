@@ -22,8 +22,16 @@ RSpec.describe RedisWebManager::Info do
 
     it 'returns a string value (type)' do
       redis = Redis.new
-      redis.set('test', 'test')
+      redis.set('test', 'test', ex: 20.seconds)
       expect(info.type('test')).to eql('string')
+    end
+
+    it 'returns a ttl value (expire)' do
+      expect(info.expire('test')).to eql(20)
+    end
+
+    it 'returns a memory usage value (memory_usage)' do
+      expect(info.memory_usage('test')).to eql(52)
     end
 
     it 'returns a test value (get)' do

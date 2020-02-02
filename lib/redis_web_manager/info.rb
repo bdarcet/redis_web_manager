@@ -22,7 +22,7 @@ module RedisWebManager
       redis.ttl(key)
     end
 
-    def key_memory_usage(key)
+    def memory_usage(key)
       redis.memory(:usage, key)
     end
 
